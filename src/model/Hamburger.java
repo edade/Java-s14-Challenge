@@ -31,6 +31,10 @@ public class Hamburger implements Addable {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getBreadRollType() {
         return breadRollType;
     }
@@ -49,14 +53,17 @@ public class Hamburger implements Addable {
         }
     }
 
-    public  void itemizeHamburger() {
+    public void itemizeHamburger() {
         StringBuilder builder = new StringBuilder();
         builder.append("name " + name);
         builder.append("meat " + meat);
         builder.append("breadroll type " + breadRollType);
-        for(Addition addition: additions){
-            builder.append(addition.getName() + addition.getPrice());
-            price = price+ addition.getPrice();
+        for (Addition addition : additions) {
+            if (addition != null) {
+                builder.append(addition.getName());
+                builder.append(addition.getPrice());
+                price = price + addition.getPrice();
+            }
         }
         System.out.println(builder);
         System.out.println(price);
